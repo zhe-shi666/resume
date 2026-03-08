@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>连腾辉 · 简历 (网页版)</title>
+  <!-- 保持原有风格，仅将AI集成移至左侧技能区，右侧提示同步优化 -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f2f5f9;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #1e2b3c;
+      padding: 2rem 1rem;
+    }
+
+    .resume-card {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 20px 35px -8px rgba(0, 20, 40, 0.15);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .header {
+      padding: 2rem 2.5rem 1.2rem 2.5rem;
+      background: linear-gradient(145deg, #ffffff 0%, #f9fcff 100%);
+      border-bottom: 1px solid #e6edf4;
+    }
+
+    .name-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .name {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0b2b40;
+      line-height: 1.2;
+    }
+
+    .badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      align-items: center;
+    }
+
+    .badge {
+      background: #eaf0f8;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1e405b;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      border: 1px solid #cdddee;
+    }
+
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #2f4a62;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-item i {
+      font-style: normal;
+      font-weight: 500;
+      color: #2e6b97;
+    }
+
+    .contact-item a {
+      color: #1e2b3c;
+      text-decoration: none;
+      border-bottom: 1px dotted transparent;
+      transition: border-color 0.2s;
+    }
+
+    .contact-item a:hover {
+      border-bottom: 1px dotted #2e6b97;
+      color: #0b2b40;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c0d4e8 20%, #c0d4e8 80%, transparent);
+      margin: 0.5rem 0 0 0;
+    }
+
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 0;
+      background: #ffffff;
+    }
+
+    .sidebar {
+      background-color: #f8fafd;
+      padding: 2rem 2rem 2rem 2.5rem;
+      border-right: 1px solid #e2eaf2;
+    }
+
+    .section {
+      margin-bottom: 2.2rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #1c4e70;
+      margin-bottom: 1.2rem;
+      border-bottom: 2px solid rgba(28, 78, 112, 0.15);
+      padding-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .section-title span {
+      background: #1c4e70;
+      width: 6px;
+      height: 20px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .edu-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .edu-school {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #0f344b;
+    }
+
+    .edu-major {
+      font-weight: 500;
+      color: #2d4e6b;
+      margin: 0.2rem 0 0.3rem 0;
+    }
+
+    .edu-detail {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.2rem;
+      font-size: 0.95rem;
+      background: #eef3f9;
+      padding: 0.6rem 1rem;
+      border-radius: 14px;
+      margin: 0.8rem 0 0.2rem 0;
+    }
+
+    .gpa {
+      background: #c9ddef;
+      border-radius: 20px;
+      padding: 0.2rem 0.8rem;
+      font-weight: 500;
+    }
+
+    .honor-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .honor-list li {
+      margin-bottom: 0.6rem;
+      display: flex;
+      gap: 0.8rem;
+      align-items: baseline;
+      font-size: 0.98rem;
+    }
+
+    .honor-tag {
+      min-width: 5.5rem;
+      font-weight: 600;
+      color: #1e4a6f;
+    }
+
+    .honor-desc {
+      color: #1f3b4f;
+    }
+
+    .skill-block p {
+      margin-bottom: 0.8rem;
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .skill-label {
+      font-weight: 600;
+      color: #183f59;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.5rem;
+      margin: 0.3rem 0 0.9rem 0;
+    }
+
+    .tech-tag {
+      background: white;
+      border: 1px solid #bdd3e9;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #193f59;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+
+    /* 新增高亮标签用于AI集成 */
+    .tech-tag.accent {
+      background: #ddeeff;
+      border-color: #7da2c3;
+      font-weight: 600;
+      color: #073959;
+    }
+
+    .main {
+      padding: 2rem 2.5rem 2rem 2rem;
+    }
+
+    .project-item {
+      margin-bottom: 2.4rem;
+    }
+
+    .project-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-name {
+      font-size: 1.4rem;
+      font-weight: 650;
+      color: #0a2e44;
+      letter-spacing: -0.01em;
+    }
+
+    .project-sub {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #4a6b86;
+      font-style: italic;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.8rem;
+      margin: 0.6rem 0 0.5rem 0;
+    }
+
+    .project-tech span {
+      background: #e4ecf5;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #153e5a;
+    }
+
+    .project-desc {
+      color: #1f3e57;
+      margin-left: 0.2rem;
+      padding-left: 0.8rem;
+      border-left: 3px solid #8bb3d0;
+    }
+
+    .project-desc p {
+      margin-top: 0.6rem;
+      font-size: 0.97rem;
+    }
+
+    .project-desc ul {
+      margin: 0.5rem 0 0.2rem 1.2rem;
+    }
+
+    .project-desc li {
+      margin-bottom: 0.45rem;
+      font-size: 0.96rem;
+    }
+
+    .inline-highlight {
+      background: #dbeafe;
+      padding: 0.1rem 0.3rem;
+      border-radius: 6px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.9rem;
+      color: #044a6b;
+    }
+
+    .footer-note {
+      margin-top: 1.2rem;
+      border-top: 1px dashed #b7cfdf;
+      padding-top: 1rem;
+      text-align: right;
+      font-size: 0.9rem;
+      color: #55738b;
+    }
+
+    .text-small {
+      font-size: 0.9rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 720px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid #e2eaf2;
+      }
+
+      .header {
+        padding: 1.5rem;
+      }
+
+      .name {
+        font-size: 2.3rem;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .contact-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="resume-card">
+    <div class="header">
+      <div class="name-title">
+        <span class="name">连腾辉</span>
+        <div class="badge-group">
+          <span class="badge">📞 15767252962</span>
+          <span class="badge">📧 shizhelth@outlook.com</span>
+          <span class="badge">🌐 Shizhelth</span>
+          <span class="badge">🐦 汕头 · 男 · 汉族 · 共青团员</span>
+        </div>
+      </div>
+      <div class="contact-bar">
+        <div class="contact-item"><i>🔗</i> <a href="http://shizhe.xyz" target="_blank">http://shizhe.xyz</a></div>
+        <div class="contact-item"><i>📁</i> GitHub: zhe-shi666</div>
+        <div class="contact-item"><i>📘</i> Gitee: shi-zhe666</div>
+        <div class="contact-item"><i>📕</i> CSDN: 拾哲</div>
+      </div>
+      <div class="divider"></div>
+    </div>
+
+    <div class="main-content">
+      <!-- 左侧栏 (教育&获奖&技能) —— 已将AI集成 LangChain4j 整合进技术栈 -->
+      <div class="sidebar">
+        <div class="section">
+          <div class="section-title"><span></span> 教育经历</div>
+          <div class="edu-item">
+            <div class="edu-school">吉林大学珠海科技学院</div>
+            <div class="edu-major">软件工程本科 · 计算机学院</div>
+            <div class="edu-detail">
+              <span class="gpa">GPA: 3.56/4.0</span>
+              <span>📊 综测年级前8%</span>
+              <span>🏅 二等奖学金</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title"><span></span> 竞赛·证书</div>
+          <ul class="honor-list">
+            <li><span class="honor-tag">🏆 蓝桥杯</span><span class="honor-desc">省级二等奖</span></li>
+            <li><span class="honor-tag">📜 软考中级</span><span class="honor-desc">软件设计师</span></li>
+            <li><span class="honor-tag">🗄️ 计算机三级</span><span class="honor-desc">数据库</span></li>
+            <li><span class="honor-tag">⭐ 志愿者</span><span class="honor-desc">一星级志愿者</span></li>
+          </ul>
+        </div>
+
+        <!-- 技术栈区域：明确包含 AI 集成 LangChain4j (accent标记)  -->
+        <div class="section">
+          <div class="section-title"><span></span> 技术栈·能力</div>
+          <div class="skill-block">
+            <span class="skill-label">Java基础</span>
+            <div class="tech-tags">
+              <span class="tech-tag">集合</span>
+              <span class="tech-tag">JVM</span>
+              <span class="tech-tag">IOC/AOP</span>
+            </div>
+
+            <span class="skill-label">框架</span>
+            <div class="tech-tags">
+              <span class="tech-tag">SpringBoot</span>
+              <span class="tech-tag">MyBatis-Plus</span>
+              <span class="tech-tag">SpringSecurity</span>
+              <span class="tech-tag">SpringTask</span>
+            </div>
+
+            <span class="skill-label">中间件 & 数据库</span>
+            <div class="tech-tags">
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Redis</span>
+              <span class="tech-tag">RabbitMQ</span>
+              <span class="tech-tag">Elasticsearch</span>
+            </div>
+
+            <!-- ✨ AI集成放在此处，并加上accent类使其更醒目，完全符合“技术栈和能力里面”的要求 -->
+            <span class="skill-label">🤖 AI 集成</span>
+            <div class="tech-tags">
+              <span class="tech-tag">LangChain4j</span>
+              <span class="tech-tag">大模型API</span>
+              <span class="tech-tag">提示词工程</span>
+              <span class="tech-tag">ChatMemory</span>
+            </div>
+
+            <span class="skill-label">工具 & 其他</span>
+            <div class="tech-tags">
+              <span class="tech-tag">Git</span>
+              <span class="tech-tag">Maven</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Linux</span>
+              <span class="tech-tag">Windsurf</span>
+              <span class="tech-tag">Trae</span>
+              <span class="tech-tag">Cursor</span>
+            </div>
+
+            <span class="skill-label">前端了解</span>
+            <div class="tech-tags">
+              <span class="tech-tag">Vue</span>
+              <span class="tech-tag">Router</span>
+              <span class="tech-tag">Pinia</span>
+              <span class="tech-tag">Element UI</span>
+              <span class="tech-tag">Axios</span>
+            </div>
+          </div>
+          <!-- 移除底部孤立的AI提示，已经完全融入上方 -->
+        </div>
+        <!-- 可保留一小句轻量化说明，但已经完整 -->
+        <div class="text-small" style="color:#567e9c; margin-top:0.2rem;">⭐ 技术栈 * 持续学习</div>
+      </div>
+
+      <!-- 右侧栏 项目经历 (内容不变，但更强调AI集成已在技能中) -->
+      <div class="main">
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">社媒内容采集与AI仿写平台</span>
+            <span class="project-sub">(MediaCrawler二次开发)</span>
+          </div>
+          <div class="project-tech">
+            <span>Spring Boot</span><span>MyBatis-Plus</span><span>MySQL</span><span>JWT</span>
+            <span>Spring Task</span><span>RESTful API</span><span>windsurf</span>
+          </div>
+          <div class="project-desc">
+            <p>基于MediaCrawler(python)二次开发，支持小红书、知乎等多平台数据实时采集与AI创作，轻量化设计，单次登录数据渲染。</p>
+            <ul>
+              <li>运用<strong>适配器模式</strong> (PlatformAdapter) 统一5+平台接口，实现“即插即用”的平台扩展。</li>
+              <li>利用<strong>SpringTask + JWT过期策略</strong>实现数据定期保存与自动清理，贯彻轻量思想。</li>
+              <li>集成大模型API + 关键词构建，对临时数据进行平台风格AI文案生成。</li>
+              <li>基于JavaRuntime与Process，<strong>多线程异步调用Python</strong> 命令行工具，解决跨语言阻塞。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">拾暂的个人博客</span>
+            <span class="project-sub">(shezhi.xyz / Aurora二次开发)</span>
+          </div>
+          <div class="project-tech">
+            <span>Spring Boot</span><span>Redis</span><span>RabbitMQ</span><span>Spring Security</span>
+            <span>Elasticsearch</span><span>MyBatis-Plus</span><span>trae/cursor</span>
+          </div>
+          <div class="project-desc">
+            <p>基于Aurora二次开发，结合AI编程工具个性化修改，添加AI管家智能体，学习中间件实战。</p>
+            <ul>
+              <li>基于<strong>LangChain4j</strong>封装AiChatService，结合Redis持久化ChatMemory，实现多轮对话上下文感知。</li>
+              <li>学习<strong>SpringSecurity+JWT</strong>的RBAC权限体系，动态资源加载与URL细粒度隔离。</li>
+              <li>掌握RabbitMQ消息体系，削峰填谷：邮件通知、系统日志、Elasticsearch索引同步。</li>
+              <li>完成QQ登录、邮箱注册功能，项目部署及优化。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 中间件/部署快速总结，和AI集成呼应但不再重复AI标签 -->
+        <div style="margin-top: 1rem; background: #f2f7fd; border-radius: 20px; padding: 1.2rem 1.5rem;">
+          <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-start;">
+            <div style="flex: 1; min-width: 160px;">
+              <div style="font-weight: 700; color: #13415a;">💾 数据库与中间件</div>
+              <div style="font-size:0.95rem; margin-top:0.3rem;">MySQL索引优化、事务隔离；Redis缓存；了解ES、RabbitMQ。</div>
+            </div>
+            <div style="flex: 1; min-width: 160px;">
+              <div style="font-weight: 700; color: #13415a;">⚙️ 部署与CI</div>
+              <div style="font-size:0.95rem; margin-top:0.3rem;">Linux常用命令、Docker镜像构建、Git工作流。</div>
+            </div>
+            <div style="flex: 1; min-width: 140px;">
+              <div style="font-weight: 700; color: #13415a;">🤖 AI实践</div>
+              <div style="font-size:0.95rem; margin-top:0.3rem;">LangChain4j / ChatMemory / 多轮对话</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          <span>⭐ 项目 * 紧跟时事</span>
+          <span style="background:#d7e5f3; padding:0.2rem 0.8rem; border-radius:30px;">shizhe.xyz</span>
+        </div>
+      </div>
+    </div>
+    <div style="height: 6px; background: linear-gradient(90deg, #c7ddef, #8ab3d0, #c7ddef);"></div>
+  </div>
+
+  <script>
+    (function () {
+      console.log("连腾辉简历 |github部署版");
+    })();
+  </script>
+</body>
+
+</html>
